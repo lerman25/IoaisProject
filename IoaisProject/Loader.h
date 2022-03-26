@@ -11,6 +11,7 @@ class Loader
 	Input* problem;
 public:
 	Loader(vector<string> lines);
+	//static vector<string> split(string str, char splitter);
 	Input* getProblem() { return problem; };
 	~Loader() {delete problem;};
 };

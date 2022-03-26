@@ -20,7 +20,8 @@ public:
 	int getM() { return m; };
 	int getJ() { return j; };
 	vector<array<int, N_SIZES>> getJobs() { return jobs; };
-	static Input generateRandom();
+	static Input generateRandom(int nm = 10, int nj = 25, int mj = 30, bool mflag=false, bool jflag=false);
+	static Input generateInc(int nm=10, int nj=25);
 	friend ostream& operator<<(ostream& output, Input input);
 	friend bool operator==(Input lhs, Input rhs);
 	friend bool operator!=(Input lhs, Input rhs);
