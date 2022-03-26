@@ -20,6 +20,7 @@ Partition::Partition(const Partition& other)
 {
 	problem = other.getProblem();
 	targetVal = other.targetVal;
+	scnTargetVal = other.scnTargetVal;
 	endtimes = other.endtimes;
 	move = other.move;
 	int* new_assigment = new int[problem->getJ()];
@@ -39,6 +40,7 @@ void Partition::operator=(const Partition& other)
 	problem = other.getProblem();
 	targetVal = other.targetVal;
 	endtimes = other.endtimes;
+	scnTargetVal = other.scnTargetVal;
 	move = other.move;
 	int* new_assigment = new int[problem->getJ()];
 	if (!new_assigment)
@@ -95,4 +97,18 @@ bool operator==(Partition& lhs, Partition& rhs)
 bool operator!=(Partition& lhs, Partition& rhs)
 {
 	return !(lhs == rhs);
+}
+bool Partition::operator<(Partition& other)
+{
+	if (this->targetVal > other.targetVal)
+		return false;
+	if (this->targetVal < other.targetVal)
+		return true;
+	if (this->scnTargetVal > other.scnTargetVal)
+		return true;
+	return false;
+}
+bool Partition::operator>(Partition& other)
+{
+	return(other < *this);
 }

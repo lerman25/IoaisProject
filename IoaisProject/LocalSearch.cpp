@@ -50,18 +50,23 @@ Partition LocalSearch::runSearch()
 	vector<Partition> ss = this->current.getSearchSpace();
 	int nJobs = problem->getJ();
 	double min = DBL_MAX;
-	Partition maxp(Partition(this->current));
+	this->current.setEndTime(this->target_func(this->current));
+	double tValue = TargetFunction::returnMax(this->current.getEndTimes(), this->current.getEndTimes().size());
+	this->current.setTargetVal(tValue);
+	this->current.setScnTargetVal(TargetFunction::sumSqrd(this->current.getEndTimes(), this->current.getEndTimes().size()));
+	Partition minp(Partition(this->current));
 	for (Partition p : ss)
 	{
 		p.setEndTime(this->target_func(p));
 		double tValue = TargetFunction::returnMax(p.getEndTimes(),p.getEndTimes().size());
-		p.setLmax(tValue);
-		if (tValue < min)
+		p.setTargetVal(tValue);
+		p.setScnTargetVal(TargetFunction::sumSqrd(p.getEndTimes(), p.getEndTimes().size()));
+		if (p < minp)
 		{
-			min = tValue;
-			maxp = p;
+			minp = p;
 		}
+		
 	}
-	this->current = maxp;
+	this->current = minp;
 	return this->current;
 }

@@ -8,5 +8,6 @@ public:
 	static vector<double> Lmax(Partition p);
 	static double returnMax(double* array, int length);
 	static double returnMax(vector<double> array, int length);
+	static double sumSqrd(vector<double> array, int length);
 };
 

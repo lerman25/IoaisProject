@@ -6,7 +6,7 @@ using std::time;
 Input::Input(int m, vector<array<int, N_SIZES>> jobs) : m(m), jobs(jobs) { j = jobs.size(); }
 Input Input::generateRandom(int nm,int nj,int mj,bool mflag,bool jflag)
 {
-	std::srand(std::time(nullptr)); // use current time as seed for random generator
+	 // use current time as seed for random generator
 	int m = nm;
 	// machine number [2,nm]
 	if (!mflag)

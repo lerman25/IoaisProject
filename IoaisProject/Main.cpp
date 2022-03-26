@@ -8,6 +8,11 @@
 #include "TargetFunction.h"
 #include <chrono>
 #include <math.h>
+#include <cstdlib>
+#include <ctime>
+using std::rand;
+using std::srand;
+using std::time;
 using std::cout;
 using std::endl;
 using std::string;
@@ -23,6 +28,7 @@ void mainInc(int argc, char* argv[]);
 #define PROJECTPATH "C:\\Users\\user\\source\\repos\\IoaisProject\\IoaisProject\\"
 int main(int argc, char* argv[])
 {
+	std::srand(std::time(nullptr));
 	//freopen("myOutput.txt", "w", stdout); // saving the output to a file named "myOutput.txt" in the project directory;
 
 	if (argc == 1)
@@ -155,6 +161,7 @@ void mainGen(int argc, char* argv[])
 	}
 	vector<Input> inputs = createInputs(num,j,argvi);
 	delete[] argvi;
+	auto start = high_resolution_clock::now();
 	for (int in = 0; in < inputs.size(); in++)
 	{
 		string input = "examples/input";
@@ -181,6 +188,10 @@ void mainGen(int argc, char* argv[])
 			ofile << "Solution: " << i << std::endl << next << std::endl;
 		} while (next != last);
 	}
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<milliseconds>(stop - start);
+	cout << "Execution time: " << duration.count() << "ms" << endl;
+	cout << "Avg time: " << duration.count() / num << "ms" << endl;
 }
 void mainInc(int argc, char* argv[])
 {
@@ -199,6 +210,7 @@ void mainInc(int argc, char* argv[])
 	}
 	vector<Input> inputs = createInputs(num, j, argvi,true);
 	delete[] argvi;
+	auto start = high_resolution_clock::now();
 	for (int in = 0; in < inputs.size(); in++)
 	{
 		string input = "examples/input";
@@ -225,4 +237,9 @@ void mainInc(int argc, char* argv[])
 			ofile << "Solution: " << i << std::endl << next << std::endl;
 		} while (next != last);
 	}
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<milliseconds>(stop - start);
+	cout << "Execution time: " << duration.count() << "ms" << endl;
+	cout << "Avg time: " << duration.count()/num << "ms" << endl;
+
 }
