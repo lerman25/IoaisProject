@@ -2,7 +2,7 @@
 using std::to_string;
 Partition::Partition(Input* input):problem(input)
 {
-	lmax = -1;
+	targetVal = -1;
 	move = "";
 	assigment = new int[problem->getJ()];
 	if (!assigment)
@@ -19,7 +19,7 @@ Partition::Partition(Input* input):problem(input)
 Partition::Partition(const Partition& other)
 {
 	problem = other.getProblem();
-	lmax = other.lmax;
+	targetVal = other.targetVal;
 	endtimes = other.endtimes;
 	move = other.move;
 	int* new_assigment = new int[problem->getJ()];
@@ -37,7 +37,7 @@ Partition::Partition(const Partition& other)
 void Partition::operator=(const Partition& other)
 {
 	problem = other.getProblem();
-	lmax = other.lmax;
+	targetVal = other.targetVal;
 	endtimes = other.endtimes;
 	move = other.move;
 	int* new_assigment = new int[problem->getJ()];

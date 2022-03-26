@@ -13,11 +13,11 @@ class Partition
 {
 	Input* problem;
 	int* assigment;
-	double lmax;
+	double targetVal;
 	vector<double> endtimes;
 	string move;
 public:
-	Partition() { assigment = NULL; lmax = -1; problem = NULL; move = ""; };
+	Partition() { assigment = NULL; targetVal = -1; problem = NULL; move = ""; };
 	Partition(Input* problem);
 	Partition(const Partition &other);
 	void operator=(const Partition& other);
@@ -26,7 +26,7 @@ public:
 	friend ostream& operator<<(ostream& output, Partition p);
 	int* getAssigment() const { return assigment; };
 	Input* getProblem() const { return problem; };
-	void setLmax(double lmax) { this->lmax = lmax; };
+	void setLmax(double targetVal) { this->targetVal = targetVal; };
 	vector<double> getEndTimes() { return endtimes; };
 	void setEndTime(vector<double> endTimes) { this->endtimes = endTimes; };
 	vector<Partition> getSearchSpace();

@@ -15,8 +15,10 @@ using std::ifstream;
 using std::vector;
 using std::ostream;
 using namespace std::chrono;
-enum ARGUMENTS { exe_arg,file_arg };
-
+enum ARGUMENTS { exe_arg,file_arg,num_arg};
+void createInputFiles();
+vector<Input> createInputs(int num);
+void mainGen(int argc, char* argv[]);
 #define PROJECTPATH "C:\\Users\\user\\source\\repos\\IoaisProject\\IoaisProject\\"
 int main(int argc, char* argv[])
 {
@@ -24,9 +26,14 @@ int main(int argc, char* argv[])
 
 	if (argc == 1)
 	{
-		cout << "No file in main arguemts" <<endl;
+		cout << "Missing argument, GEN for generated output, file for output from file" <<endl;
 		return 0;
 	};
+	if (string(argv[1]) == string("GEN"))
+	{
+		mainGen(argc,argv);
+		return 0;
+	}
 	auto start = high_resolution_clock::now();
 	Loader load(FileReader::readFile(argv[file_arg]));
 	LocalSearch ls(load.getProblem(), &TargetFunction::Lmax);
@@ -70,4 +77,60 @@ ostream& operator<<(ostream& output, Input input)
 	double pAVg = double(pSum) / double(input.m);
 	output << "total average: " << ceil(tAvg) << endl;
 	return output;
+}
+#define IFILES 10
+void createInputFiles()
+{
+	string input = "inputs/input";
+	for (int i = 1; i <= IFILES; i++)
+	{
+		ofstream ifile;
+		ifile.open(input + std::to_string(i)+".txt");
+		ifile << Input::generateRandom();
+		ifile.close();
+	}
+	return;
+}
+vector<Input> createInputs(int num)
+{
+	vector<Input> inputs;
+	for (int i = 0; i < num; i++)
+		inputs.push_back(Input::generateRandom());
+	return inputs;
+}
+void mainGen(int argc, char* argv[])
+{
+	int num = 10;
+	if (argc == 3)
+	{
+		num = stoi(string(argv[num_arg]));
+	}
+	cout << "Creating "<<num<<" generated Input and Outputs..." << endl;
+	vector<Input> inputs = createInputs(num);
+	for (int in = 0; in < inputs.size(); in++)
+	{
+		string input = "examples/input";
+		ofstream ifile;
+		ifile.open(input + std::to_string(in) + ".txt");
+		ifile << inputs[in];
+		ifile.close();
+		//Loader load(FileReader::readFile(argv[file_arg]));
+		LocalSearch ls(&inputs[in], &TargetFunction::Lmax);
+		Partition initial = ls.getCurrent();
+		Partition last = initial;
+		Partition next = initial;
+		ofstream ofile;
+		ofile.open("examples/output" + std::to_string(in) + ".txt");
+		ofile << inputs[in] << std::endl;
+		ofile << "Initial Soultion (solution 0): " << endl << initial << endl;
+		int i = 0;
+		do
+		{
+			i++;
+			last = next;
+			next = ls.runSearch();
+			ofile << next.getMove() << endl;
+			ofile << "Solution: " << i << std::endl << next << std::endl;
+		} while (next != last);
+	}
 }

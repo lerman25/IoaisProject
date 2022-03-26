@@ -31,9 +31,9 @@ ostream& operator<<(ostream& output, Partition p)
 		output <<space+"m" << (m+1) << ":" << p.getEndTimes()[m];
 		space = " ";
 	}
-	if (p.lmax != -1)
+	if (p.targetVal != -1)
 	{
-		output << std::endl<< "Target Function value: " << p.lmax << std::endl;
+		output << std::endl<< "Target Function value: " << p.targetVal << std::endl;
 	}
 	return output;
 }

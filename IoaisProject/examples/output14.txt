@@ -1,0 +1,95 @@
+numMachine:3
+j1:12,12
+j2:12,10
+j3:11,1
+j4:13,8
+j5:14,10
+j6:8,1
+j7:3,6
+j8:7,14
+j9:10,5
+j10:6,15
+j11:15,14
+j12:15,15
+j13:9,2
+j14:12,8
+total size: 102, qj sum: 147, pj sum: 121
+total average: 34
+
+Initial Soultion (solution 0): 
+Machine 1: 1(12,12) ,2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,8(7,14) ,9(10,5) ,10(6,15) ,11(15,14) ,12(15,15) ,13(9,2) ,14(12,8)
+Machine 2: 
+Machine 3: 
+Total sizes: 
+Moving job 10 from machine 1 to machine 2
+Solution: 1
+Machine 1: 1(12,12) ,2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,8(7,14) ,9(10,5) ,11(15,14) ,12(15,15) ,13(9,2) ,14(12,8)
+Machine 2: 10(6,15)
+Machine 3: 
+Total sizes: m1:106 m2:6 m3:0
+Target Function value: 106
+
+Moving job 12 from machine 1 to machine 2
+Solution: 2
+Machine 1: 1(12,12) ,2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,8(7,14) ,9(10,5) ,11(15,14) ,13(9,2) ,14(12,8)
+Machine 2: 10(6,15) ,12(15,15)
+Machine 3: 
+Total sizes: m1:91 m2:21 m3:0
+Target Function value: 91
+
+Moving job 8 from machine 1 to machine 2
+Solution: 3
+Machine 1: 1(12,12) ,2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,9(10,5) ,11(15,14) ,13(9,2) ,14(12,8)
+Machine 2: 8(7,14) ,10(6,15) ,12(15,15)
+Machine 3: 
+Total sizes: m1:77 m2:28 m3:0
+Target Function value: 77
+
+Moving job 11 from machine 1 to machine 2
+Solution: 4
+Machine 1: 1(12,12) ,2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 8(7,14) ,10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 
+Total sizes: m1:63 m2:43 m3:0
+Target Function value: 63
+
+Moving job 1 from machine 1 to machine 3
+Solution: 5
+Machine 1: 2(12,10) ,3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 8(7,14) ,10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 1(12,12)
+Total sizes: m1:51 m2:43 m3:12
+Target Function value: 51
+
+Moving job 2 from machine 1 to machine 3
+Solution: 6
+Machine 1: 3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 8(7,14) ,10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 1(12,12) ,2(12,10)
+Total sizes: m1:41 m2:43 m3:22
+Target Function value: 43
+
+Moving job 8 from machine 2 to machine 3
+Solution: 7
+Machine 1: 3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,7(3,6) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 1(12,12) ,2(12,10) ,8(7,14)
+Total sizes: m1:41 m2:36 m3:36
+Target Function value: 41
+
+Moving job 7 from machine 1 to machine 2
+Solution: 8
+Machine 1: 3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 7(3,6) ,10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 1(12,12) ,2(12,10) ,8(7,14)
+Total sizes: m1:35 m2:39 m3:36
+Target Function value: 39
+
+Moving job 7 from machine 1 to machine 2
+Solution: 9
+Machine 1: 3(11,1) ,4(13,8) ,5(14,10) ,6(8,1) ,9(10,5) ,13(9,2) ,14(12,8)
+Machine 2: 7(3,6) ,10(6,15) ,11(15,14) ,12(15,15)
+Machine 3: 1(12,12) ,2(12,10) ,8(7,14)
+Total sizes: m1:35 m2:39 m3:36
+Target Function value: 39
+
